@@ -1,3 +1,20 @@
+buildscript {
+  repositories {
+    maven {
+      url uri('../repo')
+    }
+  }
+  dependencies {
+    classpath project(':plugin')
+  }
+}
+
+evaluationDependsOn(':plugin')
+//apply plugin: 'greeting'
+task greeting(type: org.gradle.GreetingTask) {
+  greeting = 'howdy!'
+}
+
 task wrapper(type: Wrapper) {
   gradleVersion = '1.9'
   distributionUrl = 'http://services.gradle.org/distributions/gradle-1.9-all.zip'
